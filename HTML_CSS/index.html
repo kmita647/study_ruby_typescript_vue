@@ -1,0 +1,179 @@
+<!-- HTML5以降のDOCTYPE宣言 -->
+<!DOCTYPE html>
+<!-- lang属性で言語を指定。検索エンジンやスクリーンリーダーに言語情報を提供 -->
+<html lang="ja">
+<!-- head要素：ページのメタ情報やスタイル、外部リソースの参照などを含む -->
+<head>
+    <!-- 文字エンコーディングをUTF-8に設定。日本語を正しく表示するために必要 -->
+    <meta charset="UTF-8">
+    <!-- モバイルデバイス向けのビューポート設定。レスポンシブデザインに必要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ページのタイトル：ブラウザのタブやブックマークに表示される -->
+    <title>シンプルなランディングページ</title>
+    <!-- style要素：CSSスタイルを直接記述するための要素 -->
+    <style>
+        /* body要素全体のスタイル設定 */
+        body {
+            margin: 0; /* 外側の余白をなくす */
+            font-family: Arial, sans-serif; /* フォントの指定。第二候補としてsans-serifを指定 */
+            line-height: 1.6; /* 行間の高さを文字サイズの1.6倍に設定 */
+        }
+        /* ヘッダー部分のスタイル */
+        header {
+            background-image: url('img/tree.png'); /* 背景画像の設定 */
+            background-size: cover; /* 背景画像をヘッダーに合わせて拡大縮小 */
+            background-position: center; /* 背景画像を中央に配置 */
+            color: white; /* テキストの色を白に設定 */
+            text-align: center; /* テキストを中央揃えに */
+            padding: 2rem 0; /* 上下の内側の余白を2rem（32px相当）に設定 */
+            position: relative; /* 子要素の位置指定の基準点として設定 */
+        }
+        /* ヘッダーの背景オーバーレイ（画像の上に重ねる半透明の黒い層） */
+        header::before {
+            content: ''; /* 疑似要素のコンテンツを空に設定 */
+            position: absolute; /* headerを基準に絶対位置で配置 */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒を設定 */
+            z-index: 1; /* 重なり順の指定 */
+        }
+        /* ヘッダー内のテキスト要素のスタイル */
+        header h1,
+        header p {
+            position: relative; /* 位置指定 */
+            z-index: 2; /* オーバーレイより前面に表示 */
+        }
+        /* メインコンテンツの幅を制限し中央に配置するコンテナ */
+        .container {
+            max-width: 1200px; /* 最大幅を1200pxに制限 */
+            margin: 0 auto; /* 上下の余白0、左右auto指定で中央揃え */
+            padding: 2rem; /* 内側の余白を2rem設定 */
+        }
+        /* 特徴一覧を横並びにするためのフレックスボックス設定 */
+        .features {
+            display: flex; /* フレックスボックスを有効化 */
+            justify-content: space-between; /* 要素を均等に配置 */
+            margin: 2rem 0; /* 上下の余白を2rem設定 */
+        }
+        /* 個々の特徴ボックスのスタイル */
+        .feature {
+            flex: 1; /* 均等にスペースを分配 */
+            text-align: center; /* テキストを中央揃え */
+            padding: 1rem; /* 内側の余白を1rem設定 */
+        }
+        /* お問い合わせボタンのスタイル */
+        .cta-button {
+            display: inline-block; /* インラインブロック要素として表示 */
+            padding: 1rem 2rem; /* 内側の余白を上下1rem、左右2rem設定 */
+            background-color: #007bff; /* 背景色を青に設定 */
+            color: white; /* テキストの色を白に設定 */
+            text-decoration: none; /* リンクの下線を削除 */
+            border-radius: 5px; /* 角を5px丸める */
+            margin-top: 1rem; /* 上の余白を1rem設定 */
+        }
+        /* フッターのスタイル */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+        }
+        .footer-section h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .footer-section p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+        .copyright {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #222;
+            color: #888;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<!-- body要素：ウェブページの実際の内容を含む -->
+<body>
+    <!-- header要素：ページのヘッダー部分 -->
+    <header>
+        <!-- h1要素：ページの主要な見出し -->
+        <h1>私たちのサービス</h1>
+        <!-- p要素：段落テキスト -->
+        <p>最高の解決策を提供します</p>
+    </header>
+    <!-- container要素：コンテンツを中央寄せにするためのラッパー -->
+    <div class="container">
+        <!-- features要素：特徴一覧を表示するセクション -->
+        <div class="features">
+            <!-- 各feature要素：個別の特徴を表示 -->
+            <div class="feature">
+                <h2>特徴1</h2>
+                <p>高品質なサービスを提供します。</p>
+            </div>
+            <div class="feature">
+                <h2>特徴2</h2>
+                <p>迅速な対応を心がけています。</p>
+            </div>
+            <div class="feature">
+                <h2>特徴3</h2>
+                <p>安心の保証付きです。</p>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <h2>今すぐ始めましょう</h2>
+            <p>詳しい情報はこちらから</p>
+            <a href="contact.html" class="cta-button">お問い合わせ</a>
+        </div>
+    </div>
+    <!-- フッター -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>会社情報</h3>
+                <p>株式会社サンプルカンパニー</p>
+                <p>〒100-0001</p>
+                <p>東京都千代田区千代田1-1</p>
+                <p>TEL: 03-1234-5678</p>
+            </div>
+            <div class="footer-section">
+                <h3>アクセス</h3>
+                <p>最寄り駅：東京メトロ千代田線 「東京駅」徒歩5分</p>
+                <p><a href="https://www.google.com/maps/place/%E6%9D%B1%E4%BA%AC%E9%A7%85/@35.6811398,139.7644865,17z/data=!4m10!1m2!2m1!1z5p2x5Lqs6aeF!3m6!1s0x60188bfbd89f700b:0x277c49ba34ed38!8m2!3d35.6812996!4d139.7670658!15sCgnmnbHkuqzpp4WSAQ90cmFuc2l0X3N0YXRpb26qATIQATIeEAEiGlcLe-gRBmNKFIMyNmJT_bO2bJtQG_AghY-OMg4QAiIK5p2x5LqsIOmnheABAA!16zL20vMDFfdnY3?entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoASAFQAw%3D%3D" target="_blank">Google マップで見る</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>リンク</h3>
+                <p><a href="index.html">ホーム</a></p>
+                <p><a href="contact.html">お問い合わせ</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 サンプルカンパニー All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
